@@ -1,0 +1,69 @@
+%CJH_4_neural_nets.tex
+%notes for the course origins COMS12303 taught at the University of Bristol
+%2015 Conor Houghton conor.houghton@bristol.ac.uk
+
+%To the extent possible under law, the author has dedicated all copyright 
+%and related and neighboring rights to these notes to the public domain 
+%worldwide. These notes are distributed without any warranty. 
+
+\documentclass[11pt,a4paper]{scrartcl}
+\typearea{12}
+\usepackage{graphicx}
+\usepackage{pstricks}
+\usepackage{listings}
+\usepackage{color}
+\lstset{language=C}
+\pagestyle{headings}
+\markright{COMS12303 - Neural Nets - Conor}
+\begin{document}
+
+\subsection*{1. McCulloch Pitts Neurons}
+
+The brain is made of neurons; these are cells which receive inputs
+along fibers called denrites. These inputs drive complex
+electrodynamics in the cell body, called the soma; if the voltage in
+the soma is increase enough by the inputs it causes a spike of voltage
+called an action potential, or just spike, to travel along another
+fiber from the soma called the axon. The axon, in turn, carries this
+signal on to other neurons. 
+
+The junction from axon to dendrite is somewhat complicated, they are
+joined by a synapse, a complex biological machine. When a spike
+arrives at a synapse along the axon of the pre-synaptic neuron it
+causes a change in the voltage of the dendrite of the post-synaptic
+neuron. These changes are the inputs which in turn effect the soma of
+the post-synaptic neuron. Some neurons have excitatory synapses, which
+increase the voltage in the soma of the post-synaptic, some have
+inhibitory neurons, which decrease that voltage. The synapse has a
+strength which governs the size of the effect it has; this strength
+can change with time in a process called plasticity which is imagined
+to support learning.
+
+In the early 40s two scientists, cybernetists in the language of the
+day, Warren McCulloch and Walter Pitts tried to describe these
+dynamics according to a language of computation. McCulloch and Pitts
+were interesting men, both were polymaths and Pitts was largely
+self-taught and had been for a while destitute and homeless before his
+talent was spotted. 
+
+McCulloch and Pitts publish a simplified model of the neuron in
+1943. They imagined that the soma performed a direct summation of its
+current inputs, in fact, at its simplest, the voltage dynamics in the
+soma cause it to perform a time-weighted integration of its
+input. Furthermore they supposed that the cell is either in a low
+state where it does not fire action potentials, or a high state where
+it does; with the transition between these two states determined by
+the level of input. In other words, they got rid of the action
+potentials and imagined neurons as having in-active and active
+states. Thus the state of a neuron $i$ is
+\begin{equation}
+x_i=H(r_i-\theta)
+\end{equation}
+where $H$ is the Heaviside function, it is one for $r_i>\theta$ and
+zero otherwise. $r_i$ is the sum of the inputs
+\begin{equation}
+r_i=\sum_{j} w_{ij}x_j
+\end{equation}
+where $w_{ij}$ measures the strength of the connect between $x_i$ and
+$x_j$; it is the proxy for the synapse strength.
+\end{document}
